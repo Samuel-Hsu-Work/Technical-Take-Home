@@ -1,0 +1,40 @@
+{
+  // Consistent indentation settings
+  "editor.tabSize": 2,               // Use 2 spaces per indentation level (common for Next.js / React)
+  "editor.insertSpaces": true,       // Use spaces instead of tabs
+  "editor.detectIndentation": false, // Disable auto-detection to prevent mixed indentation
+
+  // Auto formatting
+  "editor.formatOnSave": true,       // Automatically format on save
+  "editor.formatOnPaste": true,      // Automatically format on paste
+
+  // Prettier integration (requires the Prettier extension)
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // File-type specific formatters
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Visualize whitespace (helps identify tabs vs. spaces)
+  "editor.renderWhitespace": "selection",
+
+  // Minor quality-of-life improvements
+  "files.trimTrailingWhitespace": true, // Automatically remove trailing spaces
+  "files.insertFinalNewline": true       // Ensure a newline at the end of every file (Git-friendly)
+}
