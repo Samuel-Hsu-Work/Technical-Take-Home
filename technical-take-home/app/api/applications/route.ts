@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
 
@@ -19,5 +19,31 @@ export async function GET() {
       { error: "Failed to load applications" },
       { status: 500 }
     );
+  }
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const { userId, shiftId } = await req.json();
+    if (!userId || !shiftId) {
+      return NextResponse.json({ error: "Missing userId or shiftId" }, { status: 400 });
+    }
+
+    const newApp = await prisma.application.create({
+      data: { userId, shiftId },
+    });
+
+    return NextResponse.json(newApp, { status: 201 });
+  } catch (error: any) {
+    console.error("Prisma create error:", error);
+
+    if (error.code) {
+      return NextResponse.json(
+        { error: `Prisma error code ${error.code}: ${error.meta?.cause || error.message}` },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ error: String(error.message || "Failed to create application") }, { status: 500 });
   }
 }
